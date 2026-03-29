@@ -1,0 +1,47 @@
+﻿@model Discount
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">İndirim Sayfası</h5>
+                
+                @if(Model is null)
+                {
+                    <a class="btn btn-primary" asp-action="Create">Sayfa Oluştur</a>
+                }
+
+            </div>
+            <div class="card-body">
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Title"></label>
+                    <input type="text" class="form-control" asp-for="Title" readonly disabled>
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="DiscountCount"></label>
+                    <input type="text" class="form-control" asp-for="DiscountCount" readonly disabled>
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="TitleSpan"></label>
+                    <input type="text" class="form-control" asp-for="TitleSpan" readonly disabled>
+                </div>
+
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Description"></label>
+                    <textarea type="text" class="form-control" asp-for="Description" readonly disabled></textarea>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="form-label" asp-for="SignButton"></label>
+                    <input type="text" class="form-control" asp-for="SignButton" readonly disabled>
+                </div>
+
+                <a class="btn btn-primary" asp-action="Edit">Düzenle</a>
+            </div>
+        </div>
+    </div>
+</div>

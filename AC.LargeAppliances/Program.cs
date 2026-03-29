@@ -1,3 +1,6 @@
+using AC.LargeAppliances.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace AC.LargeAppliances
 {
     public class Program
@@ -8,6 +11,11 @@ namespace AC.LargeAppliances
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<EcomDbContext>(options =>
+            {
+                options.UseSqlServer("Server=127.0.0.1;User Id=sa;Password=11;Database=EcomDb;Encrypt=False;");
+            });
 
             var app = builder.Build();
 

@@ -1,0 +1,55 @@
+﻿@model Discount
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Yeni İndirim Oluştur</h5>
+            </div>
+            <div class="card-body">
+
+                <form asp-action="Create" enctype="multipart/form-data" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="mb-6">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" type="text" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="DiscountCount" class="form-label"></label>
+                        <input asp-for="DiscountCount" class="form-control" type="text" />
+                        <span asp-validation-for="DiscountCount" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="TitleSpan" class="form-label"></label>
+                        <input asp-for="TitleSpan" class="form-control" type="text" />
+                        <span asp-validation-for="TitleSpan" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" type="text" ></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="SignButton" class="form-label"></label>
+                        <input asp-for="SignButton" class="form-control" type="text" />
+                        <span asp-validation-for="SignButton" class="text-danger"></span>
+                    </div>
+            
+                    <div class="mb-6">
+                        <button class="btn btn-success" type="submit">Kaydet</button>
+                        <button class="btn btn-secondary" style="float:right" asp-action="Index">Geri</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
