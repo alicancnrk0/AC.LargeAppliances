@@ -11,6 +11,14 @@ namespace AC.LargeAppliances
 
             var app = builder.Build();
 
+            app.UseStatusCodePages(async statusCodeContext =>
+            {
+                if (statusCodeContext.HttpContext.Response.StatusCode == 404)
+                {
+                    statusCodeContext.HttpContext.Response.Redirect("/Home/NotFoundPage");
+                }
+            });
+
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -25,10 +33,31 @@ namespace AC.LargeAppliances
             app.UseAuthorization();
 
             app.MapStaticAssets();
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
-                .WithStaticAssets();
+
+
+#pragma warning disable ASP0014
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapAreaControllerRoute(
+                    name: "Management",
+                    areaName: "Management",
+                    pattern: "Management/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
+
+            });
+
+#pragma warning restore
 
             app.Run();
         }

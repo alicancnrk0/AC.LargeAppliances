@@ -1,0 +1,56 @@
+﻿@{
+	var title = ViewData["Title"] as string ?? "Admin";
+	string? path = Context.Request.Path.Value?.ToLowerInvariant();
+}
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+	<div class="app-brand demo">
+		<a href="/" class="app-brand-link">
+			<span class="app-brand-logo demo">
+				<span class="text-primary">
+					<img width="175" src="~/admin/logo/logo.svg" alt="ECOM" />
+				</span>
+			</span>
+		</a>
+
+		<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+			<i class="bx bx-chevron-left d-block d-xl-none align-middle"></i>
+		</a>
+	</div>
+
+	<div class="menu-divider mt-0"></div>
+
+	<div class="menu-inner-shadow"></div>
+
+	<ul class="menu-inner py-1">
+
+		<li class="menu-header small text-uppercase">
+			<span class="menu-header-text">Site Yönetimi</span>
+		</li>
+
+		<li class="menu-item">
+			<a asp-area="ManagementArea" asp-controller="HomePages" asp-action="Index"
+				   class="menu-link">
+				<i class="menu-icon tf-icons bx bx-category-alt"></i>
+				<div class="text-truncate" data-i18n="Anasayfa">Anasayfa</div>
+			</a>
+		</li>
+
+
+
+		<li class="menu-header small text-uppercase">
+			<span class="menu-header-text">ORTAK YAPILAR</span>
+		</li>
+
+		<li class="menu-item">
+			<a asp-area="ManagementArea" asp-controller="HomePages" asp-action="Index"
+				   class="menu-link">
+				<i class="menu-icon tf-icons bx bx-category-alt"></i>
+				<div class="text-truncate" data-i18n="Anasayfa">Anasayfa</div>
+			</a>
+		</li>
+
+
+
+	</ul>
+</aside>
