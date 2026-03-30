@@ -4,6 +4,7 @@ using AC.LargeAppliances.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AC.LargeAppliances.Migrations
 {
     [DbContext(typeof(EcomDbContext))]
-    partial class EcomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260330110948_x23")]
+    partial class x23
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,98 +25,60 @@ namespace AC.LargeAppliances.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.CardItem", b =>
+            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Card", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("CardIcon1Class")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IconClass")
+                    b.Property<string>("CardIcon1Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SortOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
+                    b.Property<string>("CardIcon1Tittle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("CardItems");
-                });
-
-            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Contactpage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("BottomChatDescription")
+                    b.Property<string>("CardIcon2Class")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomChatIconClass")
+                    b.Property<string>("CardIcon2Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomChatMail")
+                    b.Property<string>("CardIcon2Tittle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomChatTitle")
+                    b.Property<string>("CardIcon3Class")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomDescription")
+                    b.Property<string>("CardIcon3Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomMapAddress")
+                    b.Property<string>("CardIcon3Tittle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomMapDescription")
+                    b.Property<string>("CardIcon4Class")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomMapIconClass")
+                    b.Property<string>("CardIcon4Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomMapTitle")
+                    b.Property<string>("CardIcon4Tittle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomPhoneDescription")
+                    b.Property<string>("CardIcon5Class")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomPhoneIconClass")
+                    b.Property<string>("CardIcon5Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BottomPhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomPhoneTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ButtonTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Maps")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StoresDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StoresTittle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tittle")
+                    b.Property<string>("CardIcon5Tittle")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contactpages");
+                    b.ToTable("Cards");
                 });
 
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Discount", b =>

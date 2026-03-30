@@ -1,0 +1,49 @@
+﻿@model Sponsor
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Sponsor Düzenle</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.ImageUrl)
+
+                    <div class="mb-6">
+                        <label asp-for="Tittle" class="form-label"></label>
+                        <input asp-for="Tittle" class="form-control" type="text" />
+                        <span asp-validation-for="Tittle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ImageAlt" class="form-label"></label>
+                        <input asp-for="ImageAlt" class="form-control" type="text" />
+                        <span asp-validation-for="ImageAlt" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="form-label">Resim</label>
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                        {
+                            <div class="mb-2">
+                                <img src="@Model.ImageUrl" alt="@Model.ImageAlt" style="width:120px; height:70px; object-fit:contain;" />
+                            </div>
+                        }
+                        <input type="file" name="img" class="form-control" accept="image/*" />
+                        <small class="text-muted">Değiştirmek istemiyorsanız boş bırakın.</small>
+                    </div>
+
+                    <div class="mb-6">
+                        <button class="btn btn-secondary" asp-action="Index">Geri</button>
+                        <button class="btn btn-success" style="float:right" type="submit">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

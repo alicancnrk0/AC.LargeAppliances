@@ -1,0 +1,163 @@
+﻿@model Contactpage
+
+@{
+    ViewData["Title"] = "İletişim Sayfası Oluştur";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">İletişim Sayfası Oluştur</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <h6 class="mb-4">Genel</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="Tittle" class="form-label"></label>
+                        <input asp-for="Tittle" class="form-control" type="text" />
+                        <span asp-validation-for="Tittle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Description" class="form-label"></label>
+                        <input asp-for="Description" class="form-control" type="text" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Maps" class="form-label"></label>
+                        <textarea asp-for="Maps" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Maps" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ButtonTitle" class="form-label"></label>
+                        <input asp-for="ButtonTitle" class="form-control" type="text" />
+                        <span asp-validation-for="ButtonTitle" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Mağazalar</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="StoresTittle" class="form-label"></label>
+                        <input asp-for="StoresTittle" class="form-control" type="text" />
+                        <span asp-validation-for="StoresTittle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="StoresDescription" class="form-label"></label>
+                        <input asp-for="StoresDescription" class="form-control" type="text" />
+                        <span asp-validation-for="StoresDescription" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Alt Bölüm</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomTitle" class="form-label"></label>
+                        <input asp-for="BottomTitle" class="form-control" type="text" />
+                        <span asp-validation-for="BottomTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomDescription" class="form-label"></label>
+                        <input asp-for="BottomDescription" class="form-control" type="text" />
+                        <span asp-validation-for="BottomDescription" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Chat</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomChatIconClass" class="form-label"></label>
+                        <input asp-for="BottomChatIconClass" class="form-control" type="text" />
+                        <span asp-validation-for="BottomChatIconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomChatTitle" class="form-label"></label>
+                        <input asp-for="BottomChatTitle" class="form-control" type="text" />
+                        <span asp-validation-for="BottomChatTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomChatDescription" class="form-label"></label>
+                        <input asp-for="BottomChatDescription" class="form-control" type="text" />
+                        <span asp-validation-for="BottomChatDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomChatMail" class="form-label"></label>
+                        <input asp-for="BottomChatMail" class="form-control" type="text" />
+                        <span asp-validation-for="BottomChatMail" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Telefon</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomPhoneIconClass" class="form-label"></label>
+                        <input asp-for="BottomPhoneIconClass" class="form-control" type="text" />
+                        <span asp-validation-for="BottomPhoneIconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomPhoneTitle" class="form-label"></label>
+                        <input asp-for="BottomPhoneTitle" class="form-control" type="text" />
+                        <span asp-validation-for="BottomPhoneTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomPhoneDescription" class="form-label"></label>
+                        <input asp-for="BottomPhoneDescription" class="form-control" type="text" />
+                        <span asp-validation-for="BottomPhoneDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomPhoneNumber" class="form-label"></label>
+                        <input asp-for="BottomPhoneNumber" class="form-control" type="text" />
+                        <span asp-validation-for="BottomPhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Harita</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomMapIconClass" class="form-label"></label>
+                        <input asp-for="BottomMapIconClass" class="form-control" type="text" />
+                        <span asp-validation-for="BottomMapIconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomMapTitle" class="form-label"></label>
+                        <input asp-for="BottomMapTitle" class="form-control" type="text" />
+                        <span asp-validation-for="BottomMapTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomMapDescription" class="form-label"></label>
+                        <input asp-for="BottomMapDescription" class="form-control" type="text" />
+                        <span asp-validation-for="BottomMapDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BottomMapAddress" class="form-label"></label>
+                        <input asp-for="BottomMapAddress" class="form-control" type="text" />
+                        <span asp-validation-for="BottomMapAddress" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <button class="btn btn-secondary" asp-action="Index">Geri</button>
+                        <button class="btn btn-success" style="float:right" type="submit">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

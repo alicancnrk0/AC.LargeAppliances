@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Sponsor>
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Sponsorlar</h5>
+                <a class="btn btn-info" asp-action="Create">Yeni</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Resim</th>
+                                <th>Başlık</th>
+                                <th>Alt Metin</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.ImageUrl" alt="@item.ImageAlt" style="width:80px; height:50px; object-fit:contain;" />
+                                    </td>
+                                    <td>@item.Tittle</td>
+                                    <td>@item.ImageAlt</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">
+                                                    <i class="icon-base bx bx-edit-alt me-1"></i> Düzenle
+                                                </a>
+                                                <button class="dropdown-item" onclick="deleteRecord('@item.Id', this)">
+                                                    <i class="icon-base bx bx-trash me-1"></i> Sil
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageScripts
+{
+    <script>
+        function deleteRecord(id, elem) {
+            $.ajax({
+                url: '/Management/Sponsors/Delete/' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (e) {
+                    if (e.status == true) {
+                        $(elem).closest('tr').remove();
+                    } else {
+                        alert(e.message);
+                    }
+                },
+                error: function () {
+                    alert('Hata!');
+                }
+            });
+        }
+    </script>
+}

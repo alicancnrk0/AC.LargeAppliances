@@ -11,8 +11,10 @@ namespace AC.LargeAppliances.Models
         public EcomDbContext(DbContextOptions<EcomDbContext> options) : base(options) { }
 
         public DbSet<Discount> Discounts { get; set; }
-        public DbSet<Card> Cards { get; set; }
-
+        public DbSet<CardItem> CardItems { get; set; }
+        public DbSet<Sponsor> Sponsors { get; set; }
+        public DbSet<Store> Stores { get; set; }
+        public DbSet<Contactpage> Contactpages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

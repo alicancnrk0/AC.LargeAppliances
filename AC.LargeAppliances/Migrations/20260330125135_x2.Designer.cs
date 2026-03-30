@@ -4,6 +4,7 @@ using AC.LargeAppliances.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AC.LargeAppliances.Migrations
 {
     [DbContext(typeof(EcomDbContext))]
-    partial class EcomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260330125135_x2")]
+    partial class x2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,77 +46,6 @@ namespace AC.LargeAppliances.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CardItems");
-                });
-
-            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Contactpage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("BottomChatDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomChatIconClass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomChatMail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomChatTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomMapAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomMapDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomMapIconClass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomMapTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomPhoneDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomPhoneIconClass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomPhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomPhoneTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BottomTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ButtonTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Maps")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StoresDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StoresTittle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tittle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Contactpages");
                 });
 
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Discount", b =>

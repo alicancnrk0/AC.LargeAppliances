@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Store>
+
+@{
+    ViewData["Title"] = "Mağazalar";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Mağazalar</h5>
+                <a class="btn btn-info" asp-action="Create">Yeni</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Başlık</th>
+                                <th>Adres</th>
+                                <th>Sıra</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Title</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.SortOrder</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id">
+                                                    <i class="icon-base bx bx-edit-alt me-1"></i> Düzenle
+                                                </a>
+                                                <button class="dropdown-item" onclick="deleteRecord('@item.Id', this)">
+                                                    <i class="icon-base bx bx-trash me-1"></i> Sil
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageScripts
+{
+    <script>
+        function deleteRecord(id, elem) {
+            $.ajax({
+                url: '/Management/Stores/Delete/' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (e) {
+                    if (e.status == true) {
+                        $(elem).closest('tr').remove();
+                    } else {
+                        alert(e.message);
+                    }
+                },
+                error: function () {
+                    alert('Hata!');
+                }
+            });
+        }
+    </script>
+}
