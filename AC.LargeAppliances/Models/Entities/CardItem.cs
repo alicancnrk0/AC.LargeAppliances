@@ -9,7 +9,7 @@ namespace AC.LargeAppliances.Models.Entities
         [Key]
         public Guid Id { get; set; }
 
-        public string? IconClass { get; set; }
+        public string? IconImagePath { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
         public int SortOrder { get; set; }

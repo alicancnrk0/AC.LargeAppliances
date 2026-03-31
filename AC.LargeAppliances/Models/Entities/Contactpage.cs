@@ -20,17 +20,17 @@ namespace AC.LargeAppliances.Models.Entities
         public string? BottomTitle { get; set; }
         public string? BottomDescription { get; set; }
 
-        public string? BottomChatIconClass { get; set; }
+        public string? BottomChatImagePath { get; set; }
         public string? BottomChatTitle { get; set; }
         public string? BottomChatDescription { get; set; }
         public string? BottomChatMail { get; set; }
 
-        public string? BottomPhoneIconClass { get; set; }
+        public string? BottomPhoneImagePath { get; set; }
         public string? BottomPhoneTitle { get; set; }
         public string? BottomPhoneDescription { get; set; }
         public string? BottomPhoneNumber { get; set; }
 
-        public string? BottomMapIconClass { get; set; }
+        public string? BottomMapImagePath { get; set; }
         public string? BottomMapTitle { get; set; }
         public string? BottomMapDescription { get; set; }
         public string? BottomMapAddress { get; set; }

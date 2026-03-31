@@ -15,6 +15,8 @@ namespace AC.LargeAppliances.Models
         public DbSet<Sponsor> Sponsors { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Contactpage> Contactpages { get; set; }
+        public DbSet<DiscountRequest> DiscountRequests { get; set; }
+        public DbSet<ContactRequest> ContactRequests { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

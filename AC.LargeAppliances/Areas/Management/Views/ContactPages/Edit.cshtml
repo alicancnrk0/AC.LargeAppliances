@@ -11,11 +11,14 @@
                 <h5 class="mb-0">İletişim Sayfası Düzenle</h5>
             </div>
             <div class="card-body">
-                <form asp-action="Edit" method="post">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
                     @Html.AntiForgeryToken()
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.BottomChatImagePath)
+                    @Html.HiddenFor(x => x.BottomPhoneImagePath)
+                    @Html.HiddenFor(x => x.BottomMapImagePath)
 
                     <h6 class="mb-4">Genel</h6>
 
@@ -76,10 +79,15 @@
                     <hr class="my-6" />
                     <h6 class="mb-4">Chat</h6>
 
+                    @if (!string.IsNullOrEmpty(Model.BottomChatImagePath))
+                    {
+                        <div class="mb-3">
+                            <img src="/@Model.BottomChatImagePath" alt="Chat Görseli" width="80" />
+                        </div>
+                    }
                     <div class="mb-6">
-                        <label asp-for="BottomChatIconClass" class="form-label"></label>
-                        <input asp-for="BottomChatIconClass" class="form-control" type="text" />
-                        <span asp-validation-for="BottomChatIconClass" class="text-danger"></span>
+                        <label class="form-label">Chat Görseli</label>
+                        <input type="file" name="chatImg" class="form-control" accept="image/*" />
                     </div>
 
                     <div class="mb-6">
@@ -103,10 +111,15 @@
                     <hr class="my-6" />
                     <h6 class="mb-4">Telefon</h6>
 
+                    @if (!string.IsNullOrEmpty(Model.BottomPhoneImagePath))
+                    {
+                        <div class="mb-3">
+                            <img src="/@Model.BottomPhoneImagePath" alt="Telefon Görseli" width="80" />
+                        </div>
+                    }
                     <div class="mb-6">
-                        <label asp-for="BottomPhoneIconClass" class="form-label"></label>
-                        <input asp-for="BottomPhoneIconClass" class="form-control" type="text" />
-                        <span asp-validation-for="BottomPhoneIconClass" class="text-danger"></span>
+                        <label class="form-label">Telefon Görseli</label>
+                        <input type="file" name="phoneImg" class="form-control" accept="image/*" />
                     </div>
 
                     <div class="mb-6">
@@ -130,10 +143,15 @@
                     <hr class="my-6" />
                     <h6 class="mb-4">Harita</h6>
 
+                    @if (!string.IsNullOrEmpty(Model.BottomMapImagePath))
+                    {
+                        <div class="mb-3">
+                            <img src="/@Model.BottomMapImagePath" alt="Harita Görseli" width="80" />
+                        </div>
+                    }
                     <div class="mb-6">
-                        <label asp-for="BottomMapIconClass" class="form-label"></label>
-                        <input asp-for="BottomMapIconClass" class="form-control" type="text" />
-                        <span asp-validation-for="BottomMapIconClass" class="text-danger"></span>
+                        <label class="form-label">Harita Görseli</label>
+                        <input type="file" name="mapImg" class="form-control" accept="image/*" />
                     </div>
 
                     <div class="mb-6">

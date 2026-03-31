@@ -1,19 +1,23 @@
 ﻿using AC.LargeAppliances.Models;
 using AC.LargeAppliances.Models.Entities;
+using AC.LargeAppliances.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AC.LargeAppliances.Areas.Management.Controllers
 {
+    [Area("Management")]
     public class ContactPagesController : Controller
     {
         private readonly EcomDbContext _context;
         private readonly ILogger<EcomDbContext> _logger;
+        private readonly IWebHostEnvironment _env;
 
-        public ContactPagesController(EcomDbContext context, ILogger<EcomDbContext> logger)
+        public ContactPagesController(EcomDbContext context, ILogger<EcomDbContext> logger, IWebHostEnvironment env)
         {
             _context = context;
             _logger = logger;
+            _env = env;
         }
 
         public async Task<IActionResult> Index()
@@ -34,10 +38,19 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Contactpage model)
+        public async Task<IActionResult> Create(Contactpage model, IFormFile? chatImg, IFormFile? phoneImg, IFormFile? mapImg)
         {
             if (ModelState.IsValid)
             {
+                if (chatImg != null)
+                    model.BottomChatImagePath = await FileUploader.UploadAsync(_env, chatImg);
+
+                if (phoneImg != null)
+                    model.BottomPhoneImagePath = await FileUploader.UploadAsync(_env, phoneImg);
+
+                if (mapImg != null)
+                    model.BottomMapImagePath = await FileUploader.UploadAsync(_env, mapImg);
+
                 model.Id = Guid.NewGuid();
                 await _context.Contactpages.AddAsync(model);
                 await _context.SaveChangesAsync();
@@ -63,10 +76,28 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Contactpage model)
+        public async Task<IActionResult> Edit(Contactpage model, IFormFile? chatImg, IFormFile? phoneImg, IFormFile? mapImg)
         {
             if (ModelState.IsValid)
             {
+                if (chatImg != null)
+                {
+                    await FileUploader.DeleteAsync(_env, model.BottomChatImagePath);
+                    model.BottomChatImagePath = await FileUploader.UploadAsync(_env, chatImg);
+                }
+
+                if (phoneImg != null)
+                {
+                    await FileUploader.DeleteAsync(_env, model.BottomPhoneImagePath);
+                    model.BottomPhoneImagePath = await FileUploader.UploadAsync(_env, phoneImg);
+                }
+
+                if (mapImg != null)
+                {
+                    await FileUploader.DeleteAsync(_env, model.BottomMapImagePath);
+                    model.BottomMapImagePath = await FileUploader.UploadAsync(_env, mapImg);
+                }
+
                 _context.Contactpages.Update(model);
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("ContactpagesController:Edit İletişim Sayfası Güncellendi");
@@ -76,6 +107,5 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
 
             return View(model);
         }
-
     }
 }

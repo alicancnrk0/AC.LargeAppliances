@@ -1,0 +1,19 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AC.LargeAppliances.Models.Entities
+{
+    [Table("ContactRequests")]
+    public class ContactRequest
+    {
+        [Key]
+        public Guid Id { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public string? Message { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public bool IsReaded { get; set; }
+    }
+}

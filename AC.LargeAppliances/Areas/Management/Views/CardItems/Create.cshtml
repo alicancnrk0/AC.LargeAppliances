@@ -4,7 +4,6 @@
     ViewData["Title"] = "Yeni Kart Öğesi";
 }
 
-
 <div class="row mb-6 gy-6">
     <div class="col-xl">
         <div class="card">
@@ -12,7 +11,7 @@
                 <h5 class="mb-0">Yeni Kart Öğesi</h5>
             </div>
             <div class="card-body">
-                <form asp-action="Create" method="post">
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
                     @Html.AntiForgeryToken()
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -23,9 +22,8 @@
                     </div>
 
                     <div class="mb-6">
-                        <label asp-for="IconClass" class="form-label"></label>
-                        <input asp-for="IconClass" class="form-control" type="text" />
-                        <span asp-validation-for="IconClass" class="text-danger"></span>
+                        <label class="form-label">İkon Görseli</label>
+                        <input type="file" name="img" class="form-control" accept="image/*" />
                     </div>
 
                     <div class="mb-6">

@@ -67,10 +67,12 @@
                 <hr class="my-6" />
                 <h6 class="mb-4">Chat</h6>
 
-                <div class="mb-6">
-                    <label class="form-label" asp-for="BottomChatIconClass"></label>
-                    <input type="text" class="form-control" asp-for="BottomChatIconClass" readonly disabled />
-                </div>
+                @if (!string.IsNullOrEmpty(Model?.BottomChatImagePath))
+                {
+                    <div class="mb-3">
+                        <img src="/@Model.BottomChatImagePath" alt="Chat Görseli" width="80" />
+                    </div>
+                }
 
                 <div class="mb-6">
                     <label class="form-label" asp-for="BottomChatTitle"></label>
@@ -90,10 +92,12 @@
                 <hr class="my-6" />
                 <h6 class="mb-4">Telefon</h6>
 
-                <div class="mb-6">
-                    <label class="form-label" asp-for="BottomPhoneIconClass"></label>
-                    <input type="text" class="form-control" asp-for="BottomPhoneIconClass" readonly disabled />
-                </div>
+                @if (!string.IsNullOrEmpty(Model?.BottomPhoneImagePath))
+                {
+                    <div class="mb-3">
+                        <img src="/@Model.BottomPhoneImagePath" alt="Telefon Görseli" width="80" />
+                    </div>
+                }
 
                 <div class="mb-6">
                     <label class="form-label" asp-for="BottomPhoneTitle"></label>
@@ -113,10 +117,12 @@
                 <hr class="my-6" />
                 <h6 class="mb-4">Harita</h6>
 
-                <div class="mb-6">
-                    <label class="form-label" asp-for="BottomMapIconClass"></label>
-                    <input type="text" class="form-control" asp-for="BottomMapIconClass" readonly disabled />
-                </div>
+                @if (!string.IsNullOrEmpty(Model?.BottomMapImagePath))
+                {
+                    <div class="mb-3">
+                        <img src="/@Model.BottomMapImagePath" alt="Harita Görseli" width="80" />
+                    </div>
+                }
 
                 <div class="mb-6">
                     <label class="form-label" asp-for="BottomMapTitle"></label>

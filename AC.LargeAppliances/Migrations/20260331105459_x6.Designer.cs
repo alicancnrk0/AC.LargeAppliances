@@ -4,6 +4,7 @@ using AC.LargeAppliances.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AC.LargeAppliances.Migrations
 {
     [DbContext(typeof(EcomDbContext))]
-    partial class EcomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260331105459_x6")]
+    partial class x6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,38 +46,6 @@ namespace AC.LargeAppliances.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CardItems");
-                });
-
-            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.ContactRequest", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsReaded")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ContactRequests");
                 });
 
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Contactpage", b =>
@@ -172,26 +143,6 @@ namespace AC.LargeAppliances.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Discounts");
-                });
-
-            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.DiscountRequest", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsReaded")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MailAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DiscountRequests");
                 });
 
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Sponsor", b =>
