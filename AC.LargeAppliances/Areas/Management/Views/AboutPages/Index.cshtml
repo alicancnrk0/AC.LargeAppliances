@@ -1,0 +1,160 @@
+﻿@model AboutPage
+
+@{
+    ViewData["Title"] = "Hakkımızda Sayfası";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Hakkımızda Sayfası</h5>
+                @if (Model is null)
+                {
+                    <a class="btn btn-primary" asp-action="Create">Sayfa Oluştur</a>
+                }
+            </div>
+            <div class="card-body">
+
+                <h6 class="mb-4">Genel</h6>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="SubTitle"></label>
+                    <input type="text" class="form-control" asp-for="SubTitle" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Title"></label>
+                    <input type="text" class="form-control" asp-for="Title" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Description"></label>
+                    <textarea type="text" class="form-control" asp-for="Description" readonly disabled ></textarea>
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="ImageUrl"></label>
+                    <img src="@Model?.ImageUrl" style="width:80px; height:50px; object-fit:contain; display:block;" />
+                </div>
+
+                <hr class="my-6" />
+                <h6 class="mb-4">Değerler</h6>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Value1IconClass"></label>
+                    <input type="text" class="form-control" asp-for="Value1IconClass" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Value1Title"></label>
+                    <input type="text" class="form-control" asp-for="Value1Title" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Value2IconClass"></label>
+                    <input type="text" class="form-control" asp-for="Value2IconClass" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Value2Title"></label>
+                    <input type="text" class="form-control" asp-for="Value2Title" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Value3IconClass"></label>
+                    <input type="text" class="form-control" asp-for="Value3IconClass" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Value3Title"></label>
+                    <input type="text" class="form-control" asp-for="Value3Title" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Value4IconClass"></label>
+                    <input type="text" class="form-control" asp-for="Value4IconClass" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Value4Title"></label>
+                    <input type="text" class="form-control" asp-for="Value4Title" readonly disabled />
+                </div>
+
+                <hr class="my-6" />
+                <h6 class="mb-4">Özellikler</h6>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Features1Title"></label>
+                    <input type="text" class="form-control" asp-for="Features1Title" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Features1Description"></label>
+                    <input type="text" class="form-control" asp-for="Features1Description" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Features2Title"></label>
+                    <input type="text" class="form-control" asp-for="Features2Title" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Features2Description"></label>
+                    <input type="text" class="form-control" asp-for="Features2Description" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Features3Title"></label>
+                    <input type="text" class="form-control" asp-for="Features3Title" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Features3Description"></label>
+                    <input type="text" class="form-control" asp-for="Features3Description" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Features4Title"></label>
+                    <input type="text" class="form-control" asp-for="Features4Title" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Features4Description"></label>
+                    <input type="text" class="form-control" asp-for="Features4Description" readonly disabled />
+                </div>
+
+                <hr class="my-6" />
+                <h6 class="mb-4">Partner</h6>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="PartnerTitle"></label>
+                    <input type="text" class="form-control" asp-for="PartnerTitle" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="PartnerDescription"></label>
+                    <input type="text" class="form-control" asp-for="PartnerDescription" readonly disabled />
+                </div>
+
+                <hr class="my-6" />
+                <h6 class="mb-4">Mağazalar</h6>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="StoresTitle"></label>
+                    <input type="text" class="form-control" asp-for="StoresTitle" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="StoresDescription"></label>
+                    <input type="text" class="form-control" asp-for="StoresDescription" readonly disabled />
+                </div>
+
+                @if (Model != null)
+                {
+                    <a class="btn btn-primary" asp-action="Edit">Düzenle</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,9 +22,33 @@ namespace AC.LargeAppliances.Controllers
         }
 
 
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            return View();
+            AboutPageVM vm = new AboutPageVM();
+
+            vm.AboutPage = await _context.AboutPages
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+
+            vm.Sponsors = await _context.Sponsors
+                .AsNoTracking()
+                .ToListAsync();
+
+            vm.Stores = await _context.Stores
+                .AsNoTracking()
+                .OrderBy(x => x.SortOrder)
+                .ToListAsync();
+
+            vm.CardItems = await _context.CardItems
+                .AsNoTracking()
+                .OrderBy(x => x.SortOrder)
+                .ToListAsync();
+
+            vm.Discount = await _context.Discounts
+               .AsNoTracking()
+               .FirstOrDefaultAsync();
+
+            return View(vm);
         }
 
         public async Task<IActionResult> Contact()
@@ -104,6 +128,48 @@ namespace AC.LargeAppliances.Controllers
             return Redirect(returnUrl ?? "/");
         }
 
+
+        public IActionResult Vendors() 
+        {
+            return View();
+        }
+
+
+        public IActionResult Products()
+        {
+            return View();
+        }
+
+
+        public IActionResult ProductView()
+        {
+            return View();
+        }
+
+        public IActionResult Term()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Careers()
+        {
+            CareersPageVM vm = new CareersPageVM();
+
+            vm.Career = await _context.Careers
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+
+            vm.CardItems = await _context.CardItems
+                .AsNoTracking()
+                .OrderBy(x => x.SortOrder)
+                .ToListAsync();
+
+            vm.Discount = await _context.Discounts
+               .AsNoTracking()
+               .FirstOrDefaultAsync();
+
+            return View(vm);
+        }
 
     }
 }

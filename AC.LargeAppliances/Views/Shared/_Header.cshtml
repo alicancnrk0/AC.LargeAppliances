@@ -15,72 +15,25 @@
                 <div class="header-left">
                     <div class="header-logo"><a class="d-flex" href="index.html"><img alt="Ecom" src="~/assets/imgs/template/logo.svg"></a></div>
                     <div class="header-search">
-                        <div class="box-header-search">
-                            <form class="form-search" method="post" action="#">
-                                <div class="box-category">
-                                    <select class="select-active select2-hidden-accessible">
-                                        <option>All categories</option>
-                                        <option value="Computers Accessories">Computers Accessories</option>
-                                        <option value="Cell Phones">Cell Phones</option>
-                                        <option value="Gaming Gatgets">Gaming Gatgets</option>
-                                        <option value="Smart watches">Smart watches</option>
-                                        <option value="Wired Headphone">Wired Headphone</option>
-                                        <option value="Mouse &amp; Keyboard">Mouse Keyboard</option>
-                                        <option value="Headphone">Headphone</option>
-                                        <option value="Bluetooth devices">Bluetooth devices</option>
-                                        <option value="Cloud Software">Cloud Software</option>
-                                    </select>
-                                </div>
-                                <div class="box-keysearch">
-                                    <input class="form-control font-xs" type="text" value="" placeholder="Search for items">
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                     <div class="header-nav">
                         <nav class="nav-main-menu d-none d-xl-block">
                             <ul class="main-menu">
-                                <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                                <li><a asp-controller="Home" asp-action="Index" class="activate">Ana Sayfa</a></li>
+
+                                <li><a asp-controller="Home" asp-action="Vendors">Satıcılar</a></li>
+
+                                <li><a asp-controller="Home" asp-action="Products">Ürünler</a></li>
 
                                 <li class="has-children">
-                                    <a href="shop-grid.html">Shop</a>
+                                    <a class="active" asp-controller="Home" asp-action="About">Kurumsal</a>
                                     <ul class="sub-menu two-col">
-                                        <li><a href="shop-grid.html">Shop Grid</a></li>
-                                        <li><a href="shop-grid-2.html">Shop Grid 2</a></li>
-                                        <li><a href="shop-list.html">Shop list - Left sidebar</a></li>
-                                        <li><a href="shop-list-2.html">Shop list - Right sidebar</a></li>
-                                        <li><a href="shop-fullwidth.html">Shop Fullwidth</a></li>
-                                        <li><a href="shop-single-product.html">Single Product</a></li>
-                                        <li><a href="shop-single-product-2.html">Single Product 2</a></li>
-                                        <li><a href="shop-single-product-3.html">Single Product 3</a></li>
-                                        <li><a href="shop-single-product-4.html">Single Product 4</a></li>
-                                        <li><a href="shop-cart.html">Shop Cart</a></li>
-                                        <li><a href="shop-checkout.html">Shop Checkout</a></li>
-                                        <li><a href="shop-compare.html">Shop Compare</a></li>
-                                        <li><a href="shop-wishlist.html">Shop Wishlist</a></li>
+                                        <li><a asp-controller="Home" asp-action="About">Hakkımızda</a></li>
+                                        <li><a asp-controller="Home" asp-action="Term">Şartlarımız</a></li>
+                                        <li><a asp-controller="Home" asp-action="Careers">Kariyer</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-children">
-                                    <a href="shop-vendor-list.html">Vendors</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-vendor-list.html">Vendors Listing</a></li>
-                                        <li><a href="shop-vendor-single.html">Vendor Single</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="#">Pages</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="page-about-us.html">About Us</a></li>
-                                        <li><a href="page-contact.html">Contact Us</a></li>
-                                        <li><a href="page-careers.html">Careers</a></li>
-                                        <li><a href="page-term.html">Term and Condition</a></li>
-                                        <li><a href="page-register.html">Register</a></li>
-                                        <li><a href="page-login.html">Login</a></li>
-                                        <li><a href="page-404.html">Error 404</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a asp-controller="Home" asp-action="About">Hakkımızda</a></li>
 
                                 <li><a asp-controller="Home" asp-action="Contact">İletişim</a></li>
                             </ul>
@@ -146,45 +99,18 @@
                             <ul class="mobile-menu font-heading">
                                 <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
 
-                                <li class="has-children">
-                                    <a href="shop-grid.html">Shop</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-grid.html">Shop Grid</a></li>
-                                        <li><a href="shop-grid-2.html">Shop Grid 2</a></li>
-                                        <li><a href="shop-list.html">Shop List</a></li>
-                                        <li><a href="shop-list-2.html">Shop List 2</a></li>
-                                        <li><a href="shop-fullwidth.html">Shop Fullwidth</a></li>
-                                        <li><a href="shop-single-product.html">Single Product</a></li>
-                                        <li><a href="shop-single-product-2.html">Single Product 2</a></li>
-                                        <li><a href="shop-single-product-3.html">Single Product 3</a></li>
-                                        <li><a href="shop-single-product-4.html">Single Product 4</a></li>
-                                        <li><a href="shop-cart.html">Shop Cart</a></li>
-                                        <li><a href="shop-checkout.html">Shop Checkout</a></li>
-                                        <li><a href="shop-compare.html">Shop Compare</a></li>
-                                        <li><a href="shop-wishlist.html">Shop Wishlist</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="shop-vendor-list.html">Vendors</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-vendor-list.html">Vendors Listing</a></li>
-                                        <li><a href="shop-vendor-single.html">Vendor Single</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="#">Pages</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="page-about-us.html">About Us</a></li>
-                                        <li><a href="page-contact.html">Contact Us</a></li>
-                                        <li><a href="page-careers.html">Careers</a></li>
-                                        <li><a href="page-term.html">Term and Condition</a></li>
-                                        <li><a href="page-register.html">Register</a></li>
-                                        <li><a href="page-login.html">Login</a></li>
-                                        <li><a href="page-404.html">Error 404</a></li>
-                                    </ul>
-                                </li>
+                                <li><a asp-controller="Home" asp-action="Vendors">Satıcılar</a></li>
 
-                                <li><a asp-controller="Home" asp-action="About">Hakkımızda</a></li>
+                                <li><a asp-controller="Home" asp-action="Products">Ürünler</a></li>
+
+                                <li class="has-children">
+                                    <a class="active" asp-controller="Home" asp-action="About">Kurumsal</a>
+                                    <ul class="sub-menu two-col">
+                                        <li><a asp-controller="Home" asp-action="About">Hakkımızda</a></li>
+                                        <li><a asp-controller="Home" asp-action="Term">Şartlarımız</a></li>
+                                        <li><a asp-controller="Home" asp-action="Careers">Kariyer</a></li>
+                                    </ul>
+                                </li>
 
                                 <li><a asp-controller="Home" asp-action="Contact">İletişim</a></li>
                             </ul>
@@ -232,44 +158,18 @@
                             <ul class="mobile-menu font-heading">
                                 <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
 
+                                <li><a asp-controller="Home" asp-action="Vendors">Satıcılar</a></li>
+
+                                <li><a asp-controller="Home" asp-action="Products">Ürünler</a></li>
+
                                 <li class="has-children">
-                                    <a href="shop-grid.html">Shop</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-grid.html">Shop Grid</a></li>
-                                        <li><a href="shop-grid-2.html">Shop Grid 2</a></li>
-                                        <li><a href="shop-list.html">Shop List</a></li>
-                                        <li><a href="shop-list-2.html">Shop List 2</a></li>
-                                        <li><a href="shop-fullwidth.html">Shop Fullwidth</a></li>
-                                        <li><a href="shop-single-product.html">Single Product</a></li>
-                                        <li><a href="shop-single-product-2.html">Single Product 2</a></li>
-                                        <li><a href="shop-single-product-3.html">Single Product 3</a></li>
-                                        <li><a href="shop-single-product-4.html">Single Product 4</a></li>
-                                        <li><a href="shop-cart.html">Shop Cart</a></li>
-                                        <li><a href="shop-checkout.html">Shop Checkout</a></li>
-                                        <li><a href="shop-compare.html">Shop Compare</a></li>
-                                        <li><a href="shop-wishlist.html">Shop Wishlist</a></li>
+                                    <a class="active" asp-controller="Home" asp-action="About">Kurumsal</a>
+                                    <ul class="sub-menu two-col">
+                                        <li><a asp-controller="Home" asp-action="About">Hakkımızda</a></li>
+                                        <li><a asp-controller="Home" asp-action="Term">Şartlarımız</a></li>
+                                        <li><a asp-controller="Home" asp-action="Careers">Kariyer</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-children">
-                                    <a href="shop-vendor-list.html">Vendors</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-vendor-list.html">Vendors Listing</a></li>
-                                        <li><a href="shop-vendor-single.html">Vendor Single</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="#">Pages</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="page-about-us.html">About Us</a></li>
-                                        <li><a href="page-contact.html">Contact Us</a></li>
-                                        <li><a href="page-careers.html">Careers</a></li>
-                                        <li><a href="page-term.html">Term and Condition</a></li>
-                                        <li><a href="page-register.html">Register</a></li>
-                                        <li><a href="page-login.html">Login</a></li>
-                                        <li><a href="page-404.html">Error 404</a></li>
-                                    </ul>
-                                </li>
-                                <li><a asp-controller="Home" asp-action="About">Hakkımızda</a></li>
 
                                 <li><a asp-controller="Home" asp-action="Contact">İletişim</a></li>
                             </ul>
@@ -294,13 +194,7 @@
                             <li><a href="page-login.html">Sign out</a></li>
                         </ul>
                     </div>
-                    <div class="mobile-banner">
-                        <div class="bg-5 block-iphone">
-                            <span class="color-brand-3 font-sm-lh32">Starting from $899</span>
-                            <h3 class="font-xl mb-10">iPhone 12 Pro 128Gb</h3>
-                            <p class="font-base color-brand-3 mb-10">Special Sale</p><a class="btn btn-arrow" href="shop-grid.html">learn more</a>
-                        </div>
-                    </div>
+
                     <div class="site-copyright color-gray-400 mt-30">Copyright 2022 &copy; Ecom - Marketplace Template.<br>Designed by<a href="http://alithemes.com" target="_blank">&nbsp; AliThemes</a></div>
                 </div>
             </div>

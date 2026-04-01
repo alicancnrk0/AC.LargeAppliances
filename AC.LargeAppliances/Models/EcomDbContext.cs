@@ -17,6 +17,9 @@ namespace AC.LargeAppliances.Models
         public DbSet<Contactpage> Contactpages { get; set; }
         public DbSet<DiscountRequest> DiscountRequests { get; set; }
         public DbSet<ContactRequest> ContactRequests { get; set; }
+        public DbSet<AboutPage> AboutPages { get; set; }
+        public DbSet<Career> Careers { get; set; }
+        public DbSet<Term> Terms { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

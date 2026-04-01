@@ -1,0 +1,192 @@
+﻿@model AboutPage
+
+@{
+    ViewData["Title"] = "Hakkımızda Sayfası Düzenle";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Hakkımızda Sayfası Düzenle</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.ImageUrl)
+
+                    <h6 class="mb-4">Genel</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="SubTitle" class="form-label"></label>
+                        <input asp-for="SubTitle" class="form-control" type="text" />
+                        <span asp-validation-for="SubTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" type="text" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" type="text" ></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <div class="mb-3">
+                            <img src="@Model.ImageUrl" style="width:80px; height:50px; object-fit:contain;" />
+                        </div>
+                    }
+                    <div class="mb-6">
+                        <label class="form-label">Ana Görsel</label>
+                        <input type="file" name="mainImg" class="form-control" accept="image/*" />
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Değerler</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="Value1IconClass" class="form-label"></label>
+                        <input asp-for="Value1IconClass" class="form-control" type="text" />
+                        <span asp-validation-for="Value1IconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Value1Title" class="form-label"></label>
+                        <input asp-for="Value1Title" class="form-control" type="text" />
+                        <span asp-validation-for="Value1Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Value2IconClass" class="form-label"></label>
+                        <input asp-for="Value2IconClass" class="form-control" type="text" />
+                        <span asp-validation-for="Value2IconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Value2Title" class="form-label"></label>
+                        <input asp-for="Value2Title" class="form-control" type="text" />
+                        <span asp-validation-for="Value2Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Value3IconClass" class="form-label"></label>
+                        <input asp-for="Value3IconClass" class="form-control" type="text" />
+                        <span asp-validation-for="Value3IconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Value3Title" class="form-label"></label>
+                        <input asp-for="Value3Title" class="form-control" type="text" />
+                        <span asp-validation-for="Value3Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Value4IconClass" class="form-label"></label>
+                        <input asp-for="Value4IconClass" class="form-control" type="text" />
+                        <span asp-validation-for="Value4IconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Value4Title" class="form-label"></label>
+                        <input asp-for="Value4Title" class="form-control" type="text" />
+                        <span asp-validation-for="Value4Title" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Özellikler</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="Features1Title" class="form-label"></label>
+                        <input asp-for="Features1Title" class="form-control" type="text" />
+                        <span asp-validation-for="Features1Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Features1Description" class="form-label"></label>
+                        <input asp-for="Features1Description" class="form-control" type="text" />
+                        <span asp-validation-for="Features1Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Features2Title" class="form-label"></label>
+                        <input asp-for="Features2Title" class="form-control" type="text" />
+                        <span asp-validation-for="Features2Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Features2Description" class="form-label"></label>
+                        <input asp-for="Features2Description" class="form-control" type="text" />
+                        <span asp-validation-for="Features2Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Features3Title" class="form-label"></label>
+                        <input asp-for="Features3Title" class="form-control" type="text" />
+                        <span asp-validation-for="Features3Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Features3Description" class="form-label"></label>
+                        <input asp-for="Features3Description" class="form-control" type="text" />
+                        <span asp-validation-for="Features3Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Features4Title" class="form-label"></label>
+                        <input asp-for="Features4Title" class="form-control" type="text" />
+                        <span asp-validation-for="Features4Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Features4Description" class="form-label"></label>
+                        <input asp-for="Features4Description" class="form-control" type="text" />
+                        <span asp-validation-for="Features4Description" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Partner</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="PartnerTitle" class="form-label"></label>
+                        <input asp-for="PartnerTitle" class="form-control" type="text" />
+                        <span asp-validation-for="PartnerTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="PartnerDescription" class="form-label"></label>
+                        <input asp-for="PartnerDescription" class="form-control" type="text" />
+                        <span asp-validation-for="PartnerDescription" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Mağazalar</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="StoresTitle" class="form-label"></label>
+                        <input asp-for="StoresTitle" class="form-control" type="text" />
+                        <span asp-validation-for="StoresTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="StoresDescription" class="form-label"></label>
+                        <input asp-for="StoresDescription" class="form-control" type="text" />
+                        <span asp-validation-for="StoresDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <button class="btn btn-secondary" asp-action="Index">Geri</button>
+                        <button class="btn btn-success" style="float:right" type="submit">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

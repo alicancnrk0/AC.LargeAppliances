@@ -6,36 +6,37 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AC.LargeAppliances.Migrations
 {
     /// <inheritdoc />
-    public partial class x1 : Migration
+    public partial class x2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Cards",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cards", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Discounts",
+                name: "Careers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DiscountCount = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TitleSpan = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SignButton = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Img = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Discounts", x => x.Id);
+                    table.PrimaryKey("PK_Careers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Terms",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Img = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Policy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Terms", x => x.Id);
                 });
         }
 
@@ -43,10 +44,10 @@ namespace AC.LargeAppliances.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cards");
+                name: "Careers");
 
             migrationBuilder.DropTable(
-                name: "Discounts");
+                name: "Terms");
         }
     }
 }

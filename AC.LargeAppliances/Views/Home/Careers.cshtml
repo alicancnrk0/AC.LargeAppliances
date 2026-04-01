@@ -1,0 +1,59 @@
+﻿@model CareersPageVM
+
+@{
+    ViewData["Title"] = "Kariyer";
+}
+
+
+
+<section class="section-box shop-template mt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto page-content">
+                <h2 class="text-center mb-20">@Model.Career?.Title</h2><img class="mb-30" src="@Model.Career?.Img" alt="@Model.Career?.Title">
+                @Html.Raw(Model.Career?.Description)
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-box mt-90 mb-50">
+    <div class="container">
+        <ul class="list-col-5">
+
+            @foreach (var item in Model.CardItems)
+            {
+                <li>
+                    <div class="item-list">
+                        <div class="icon-left"><img src="@(item.IconImagePath)" alt="@item.Title"></div>
+                        <div class="info-right">
+                            <h5 class="font-lg-bold color-gray-100">@item.Title</h5>
+                            <p class="font-sm color-gray-500">@item.Description</p>
+                        </div>
+                    </div>
+                </li>
+            }
+
+        </ul>
+    </div>
+</section>
+<section class="section-box box-newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-7 col-sm-12">
+                <h3 class="color-white">@Model.Discount?.Title <span class="color-warning">@Model.Discount?.DiscountCount</span> @Model.Discount?.TitleSpan</h3>
+                <p class="font-lg color-white">@Model.Discount?.Description</p>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-12">
+                <div class="box-form-newsletter mt-15">
+                    <form asp-controller="Home" asp-action="Subscribe" method="post">
+                        <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+
+                        @Html.AntiForgeryToken()
+                        <input class="input-newsletter font-xs" name="mailAddress" placeholder="E-posta adresiniz">
+                        <button class="btn btn-brand-2" type="submit">@Model.Discount?.SignButton</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

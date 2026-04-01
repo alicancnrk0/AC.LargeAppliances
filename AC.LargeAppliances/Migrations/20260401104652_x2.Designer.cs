@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AC.LargeAppliances.Migrations
 {
     [DbContext(typeof(EcomDbContext))]
-    [Migration("20260331105459_x6")]
-    partial class x6
+    [Migration("20260401104652_x2")]
+    partial class x2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,89 @@ namespace AC.LargeAppliances.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.AboutPage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features1Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features1Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features2Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features2Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features3Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features3Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features4Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Features4Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PartnerDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PartnerTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StoresDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StoresTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value1IconClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value1Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value2IconClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value2Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value3IconClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value3Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value4IconClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value4Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AboutPages");
+                });
 
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.CardItem", b =>
                 {
@@ -46,6 +129,58 @@ namespace AC.LargeAppliances.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CardItems");
+                });
+
+            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Career", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Careers");
+                });
+
+            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.ContactRequest", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsReaded")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactRequests");
                 });
 
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Contactpage", b =>
@@ -145,6 +280,26 @@ namespace AC.LargeAppliances.Migrations
                     b.ToTable("Discounts");
                 });
 
+            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.DiscountRequest", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsReaded")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DiscountRequests");
+                });
+
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Sponsor", b =>
                 {
                     b.Property<Guid>("Id")
@@ -183,6 +338,26 @@ namespace AC.LargeAppliances.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stores");
+                });
+
+            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Term", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Policy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Terms");
                 });
 #pragma warning restore 612, 618
         }
