@@ -9,9 +9,9 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
     public class StoresController : Controller
     {
         private readonly EcomDbContext _context;
-        private readonly ILogger<EcomDbContext> _logger;
+        private readonly ILogger<StoresController> _logger;
 
-        public StoresController(EcomDbContext context, ILogger<EcomDbContext> logger)
+        public StoresController(EcomDbContext context, ILogger<StoresController> logger)
         {
             _context = context;
             _logger = logger;

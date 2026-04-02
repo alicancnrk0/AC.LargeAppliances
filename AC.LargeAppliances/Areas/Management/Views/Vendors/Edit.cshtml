@@ -1,0 +1,94 @@
+﻿@model Vendor
+
+@{
+    ViewData["Title"] = "Vendor Düzenle";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Vendor Düzenle</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.Img)
+
+                    @if (!string.IsNullOrEmpty(Model.Img))
+                    {
+                        <div class="mb-3">
+                            <img src="@Model.Img" style="width:80px; height:50px; object-fit:contain;" />
+                        </div>
+                    }
+                    <div class="mb-6">
+                        <label class="form-label">Görsel</label>
+                        <input type="file" name="img" class="form-control" accept="image/*" />
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" type="text" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ReviewCount" class="form-label"></label>
+                        <input asp-for="ReviewCount" class="form-control" type="number" />
+                        <span asp-validation-for="ReviewCount" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="YearOfFoundation" class="form-label"></label>
+                        <input asp-for="YearOfFoundation" class="form-control" type="text" />
+                        <span asp-validation-for="YearOfFoundation" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ProductTitle" class="form-label"></label>
+                        <input asp-for="ProductTitle" class="form-control" type="text" />
+                        <span asp-validation-for="ProductTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ProductCount" class="form-label"></label>
+                        <input asp-for="ProductCount" class="form-control" type="number" />
+                        <span asp-validation-for="ProductCount" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="MapIconClass" class="form-label"></label>
+                        <input asp-for="MapIconClass" class="form-control" type="text" />
+                        <span asp-validation-for="MapIconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="MapAddress" class="form-label"></label>
+                        <input asp-for="MapAddress" class="form-control" type="text" />
+                        <span asp-validation-for="MapAddress" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="PhoneIconClass" class="form-label"></label>
+                        <input asp-for="PhoneIconClass" class="form-control" type="text" />
+                        <span asp-validation-for="PhoneIconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="PhoneNumber" class="form-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" type="text" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <button class="btn btn-secondary" asp-action="Index">Geri</button>
+                        <button class="btn btn-success" style="float:right" type="submit">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

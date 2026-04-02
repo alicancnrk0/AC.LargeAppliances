@@ -10,10 +10,10 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
     public class CardItemsController : Controller
     {
         private readonly EcomDbContext _context;
-        private readonly ILogger<EcomDbContext> _logger;
+        private readonly ILogger<CardItemsController> _logger;
         private readonly IWebHostEnvironment _env;
 
-        public CardItemsController(EcomDbContext context, ILogger<EcomDbContext> logger, IWebHostEnvironment env)
+        public CardItemsController(EcomDbContext context, ILogger<CardItemsController> logger, IWebHostEnvironment env)
         {
             _context = context;
             _logger = logger;

@@ -10,11 +10,11 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
     {
 
         private readonly EcomDbContext _context;
-        private readonly ILogger<EcomDbContext> _logger;
+        private readonly ILogger<DiscountsController> _logger;
 
 
 
-        public DiscountsController(EcomDbContext context, ILogger<EcomDbContext> logger)
+        public DiscountsController(EcomDbContext context, ILogger<DiscountsController> logger)
         {
             _context = context;
             _logger = logger;

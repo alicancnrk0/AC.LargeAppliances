@@ -20,6 +20,12 @@ namespace AC.LargeAppliances.Models
         public DbSet<AboutPage> AboutPages { get; set; }
         public DbSet<Career> Careers { get; set; }
         public DbSet<Term> Terms { get; set; }
+        public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<VendorPage> VendorPages { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ProductFeature> ProductFeatures { get; set; }
+        public DbSet<ProductAdditionalInfo> ProductAdditionalInfo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

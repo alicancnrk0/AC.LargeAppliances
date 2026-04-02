@@ -10,10 +10,10 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
     public class ContactPagesController : Controller
     {
         private readonly EcomDbContext _context;
-        private readonly ILogger<EcomDbContext> _logger;
+        private readonly ILogger<ContactPagesController> _logger;
         private readonly IWebHostEnvironment _env;
 
-        public ContactPagesController(EcomDbContext context, ILogger<EcomDbContext> logger, IWebHostEnvironment env)
+        public ContactPagesController(EcomDbContext context, ILogger<ContactPagesController> logger, IWebHostEnvironment env)
         {
             _context = context;
             _logger = logger;
@@ -29,9 +29,14 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
             return View(model);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             _logger.LogInformation("ContactpagesController:Create Sayfası Açıldı");
+
+            var model = await _context.Contactpages.AnyAsync();
+
+            if (model)
+                return RedirectToAction(nameof(Index));
 
             return View();
         }

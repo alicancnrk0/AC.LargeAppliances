@@ -129,9 +129,38 @@ namespace AC.LargeAppliances.Controllers
         }
 
 
-        public IActionResult Vendors() 
+        public async Task<IActionResult> Vendors(int page = 1) 
         {
-            return View();
+            int pageSize = 12;
+
+            VendorsPageVM vm = new VendorsPageVM();
+
+            vm.VendorPage = await _context.VendorPages
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+
+            vm.Vendors = await _context.Vendors
+                .AsNoTracking()
+                .OrderBy(x => x.ReviewCount)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            vm.CardItems = await _context.CardItems
+                .AsNoTracking()
+                .OrderBy(x => x.SortOrder)
+                .ToListAsync();
+
+            vm.Discount = await _context.Discounts
+               .AsNoTracking()
+               .FirstOrDefaultAsync();
+
+            int totalVendors = await _context.Vendors.CountAsync();
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalVendors / pageSize);
+            ViewBag.TotalVendors = totalVendors;
+
+            return View(vm);
         }
 
 
@@ -146,9 +175,25 @@ namespace AC.LargeAppliances.Controllers
             return View();
         }
 
-        public IActionResult Term()
+        public async Task<IActionResult> Term()
         {
-            return View();
+
+            TermsPageVM vm = new TermsPageVM();
+
+            vm.Term = await _context.Terms
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+
+            vm.CardItems = await _context.CardItems
+                .AsNoTracking()
+                .OrderBy(x => x.SortOrder)
+                .ToListAsync();
+
+            vm.Discount = await _context.Discounts
+               .AsNoTracking()
+               .FirstOrDefaultAsync();
+
+            return View(vm);
         }
 
         public async Task<IActionResult> Careers()

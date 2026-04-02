@@ -10,10 +10,10 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
     public class SponsorsController : Controller
     {
         private readonly EcomDbContext _context;
-        private readonly ILogger<EcomDbContext> _logger;
+        private readonly ILogger<SponsorsController> _logger;
         private readonly IWebHostEnvironment _env;
 
-        public SponsorsController(EcomDbContext context, ILogger<EcomDbContext> logger, IWebHostEnvironment env)
+        public SponsorsController(EcomDbContext context, ILogger<SponsorsController> logger, IWebHostEnvironment env)
         {
             _context = context;
             _logger = logger;

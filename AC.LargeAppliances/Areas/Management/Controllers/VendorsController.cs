@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 namespace AC.LargeAppliances.Areas.Management.Controllers
 {
     [Area("Management")]
-    public class CareersPagesController : Controller
+    public class VendorsController : Controller
     {
         private readonly EcomDbContext _context;
-        private readonly ILogger<CareersPagesController> _logger;
+        private readonly ILogger<VendorsController> _logger;
         private readonly IWebHostEnvironment _env;
 
-        public CareersPagesController(EcomDbContext context, ILogger<CareersPagesController> logger, IWebHostEnvironment env)
+        public VendorsController(EcomDbContext context, ILogger<VendorsController> logger, IWebHostEnvironment env)
         {
             _context = context;
             _logger = logger;
@@ -22,26 +22,35 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model = await _context.Careers.AsNoTracking().FirstOrDefaultAsync();
+            _logger.LogInformation("VendorsController:Index Sayfası Açıldı");
+
+            var model = await _context.Vendors.AsNoTracking().ToListAsync();
+
             return View(model);
         }
 
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Detail(Guid id)
         {
-            _logger.LogInformation("CareersPagesController:Create Sayfası Açıldı");
+            _logger.LogInformation("VendorsController:Detail Sayfası Açıldı");
 
-            var model = await _context.Careers.AnyAsync();
+            var model = await _context.Vendors.AsNoTracking().FirstOrDefaultAsync(v => v.Id == id);
 
-            if (model)
+            if (model == null)
                 return RedirectToAction(nameof(Index));
 
+            return View(model);
+        }
+
+        public IActionResult Create()
+        {
+            _logger.LogInformation("VendorsController:Create Sayfası Açıldı");
 
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Career model, IFormFile? img)
+        public async Task<IActionResult> Create(Vendor model, IFormFile? img)
         {
             if (ModelState.IsValid)
             {
@@ -49,9 +58,9 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
                     model.Img = await FileUploader.UploadAsync(_env, img);
 
                 model.Id = Guid.NewGuid();
-                await _context.Careers.AddAsync(model);
+                await _context.Vendors.AddAsync(model);
                 await _context.SaveChangesAsync();
-                _logger.LogInformation("CareersPagesController:Create Yeni Kariyer Eklendi");
+                _logger.LogInformation("VendorsController:Create Yeni Vendor Eklendi");
 
                 return RedirectToAction(nameof(Index));
             }
@@ -59,11 +68,11 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Edit()
+        public async Task<IActionResult> Edit(Guid id)
         {
-            _logger.LogInformation("CareersPagesController:Edit Sayfası Açıldı");
+            _logger.LogInformation("VendorsController:Edit Sayfası Açıldı");
 
-            var model = await _context.Careers.FirstOrDefaultAsync();
+            var model = await _context.Vendors.FirstOrDefaultAsync(v => v.Id == id);
 
             if (model == null)
                 return RedirectToAction(nameof(Index));
@@ -73,7 +82,7 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Career model, IFormFile? img)
+        public async Task<IActionResult> Edit(Vendor model, IFormFile? img)
         {
             if (ModelState.IsValid)
             {
@@ -83,9 +92,9 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
                     model.Img = await FileUploader.UploadAsync(_env, img);
                 }
 
-                _context.Careers.Update(model);
+                _context.Vendors.Update(model);
                 await _context.SaveChangesAsync();
-                _logger.LogInformation("CareersPagesController:Edit Kariyer Güncellendi");
+                _logger.LogInformation("VendorsController:Edit Vendor Güncellendi");
 
                 return RedirectToAction(nameof(Index));
             }
@@ -96,18 +105,18 @@ namespace AC.LargeAppliances.Areas.Management.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var model = await _context.Careers.AsNoTracking()
+            var model = await _context.Vendors.AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (model == null)
-                return Json(new { message = "Kariyer bulunamadı.", status = false });
+                return Json(new { message = "Vendor bulunamadı.", status = false });
 
             await FileUploader.DeleteAsync(_env, model.Img);
-            _context.Careers.Remove(model);
+            _context.Vendors.Remove(model);
             await _context.SaveChangesAsync();
-            _logger.LogInformation("CareersPagesController:Delete Kariyer Silindi");
+            _logger.LogInformation("VendorsController:Delete Vendor Silindi");
 
-            return Json(new { message = "Kariyer silindi.", status = true });
+            return Json(new { message = "Vendor silindi.", status = true });
         }
     }
 }

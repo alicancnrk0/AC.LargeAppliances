@@ -1,0 +1,41 @@
+﻿@model VendorPage
+
+@{
+    ViewData["Title"] = "Satıcılar Sayfası";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Satıcılar Sayfası</h5>
+                @if (Model is null)
+                {
+                    <a class="btn btn-primary" asp-action="Create">Sayfa Oluştur</a>
+                }
+            </div>
+            <div class="card-body">
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Title"></label>
+                    <input type="text" class="form-control" asp-for="Title" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="Description"></label>
+                    <input type="text" class="form-control" asp-for="Description" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" asp-for="DescriptionAlt"></label>
+                    <input type="text" class="form-control" asp-for="DescriptionAlt" readonly disabled />
+                </div>
+
+                @if (Model != null)
+                {
+                    <a class="btn btn-primary" asp-action="Edit">Düzenle</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
