@@ -1,0 +1,322 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Ürün Düzenle";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+
+        <div class="card mb-6">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Ana Bilgiler</h5>
+                <a class="btn btn-secondary" asp-action="Index">Geri</a>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    @Html.HiddenFor(x => x.Id)
+
+                    <div class="mb-6">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" type="text" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="VendorId" class="form-label"></label>
+                        <select asp-for="VendorId" class="form-select">
+                            <option value="">-- Satıcı Seç --</option>
+                            @foreach (var vendor in ViewBag.Vendors as List<Vendor>)
+                            {
+                                <option value="@vendor.Id">@vendor.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="VendorId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Price" class="form-label"></label>
+                        <input asp-for="Price" class="form-control" type="number" step="0.01" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="OldPrice" class="form-label"></label>
+                        <input asp-for="OldPrice" class="form-control" type="number" step="0.01" />
+                        <span asp-validation-for="OldPrice" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="StarsCount" class="form-label"></label>
+                        <input asp-for="StarsCount" class="form-control" type="number" />
+                        <span asp-validation-for="StarsCount" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="SKU" class="form-label"></label>
+                        <input asp-for="SKU" class="form-control" type="text" />
+                        <span asp-validation-for="SKU" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Tags" class="form-label"></label>
+                        <input asp-for="Tags" class="form-control" type="text" />
+                        <span asp-validation-for="Tags" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" style="height:200px; resize:none;"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <button class="btn btn-success" type="submit">Kaydet</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mb-6">
+            <div class="card-header">
+                <h5 class="mb-0">Resimler</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4" id="imageList">
+                    @foreach (var image in Model.Images)
+                    {
+                        <div class="col-auto" id="img-@image.Id">
+                            <img src="@image.ImageUrl" style="width:100px; height:80px; object-fit:contain;" />
+                            <button type="button" class="btn btn-danger btn-sm d-block mt-1" onclick="deleteImage('@image.Id')">Sil</button>
+                        </div>
+                    }
+                </div>
+                <div class="input-group">
+                    <input type="file" id="newImage" class="form-control" accept="image/*" />
+                    <button type="button" class="btn btn-info" onclick="addImage()">Ekle</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card mb-6">
+            <div class="card-header">
+                <h5 class="mb-0">Özellikler</h5>
+            </div>
+            <div class="card-body">
+                <table class="table" id="featureTable">
+                    <thead>
+                        <tr>
+                            <th>Alan</th>
+                            <th>Değer</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var feature in Model.Features)
+                        {
+                            <tr id="feature-@feature.Id">
+                                <td>@feature.Key</td>  
+                                <td>@feature.Value</td>
+                                <td><button type="button" class="btn btn-danger btn-sm" onclick="deleteFeature('@feature.Id')">Sil</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="text" id="newFeatureKey" class="form-control" placeholder="Alan (Renk vs.)" />
+                    </div>
+                    <div class="col">
+                        <input type="text" id="newFeatureValue" class="form-control" placeholder="Değer" />
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-info" onclick="addFeature()">Ekle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+ 
+        <div class="card mb-6">
+            <div class="card-header">
+                <h5 class="mb-0">Ek Bilgiler</h5>
+            </div>
+            <div class="card-body">
+                <table class="table" id="infoTable">
+                    <thead>
+                        <tr>
+                            <th>Alan</th>
+                            <th>Değer</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var info in Model.AdditionalInfos)
+                        {
+                            <tr id="info-@info.Id">
+                                <td>@info.Key</td>
+                                <td>@info.Value</td>
+                                <td><button type="button" class="btn btn-danger btn-sm" onclick="deleteInfo('@info.Id')">Sil</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="text" id="newInfoKey" class="form-control" placeholder="Alan (Weight vs.)" />
+                    </div>
+                    <div class="col">
+                        <input type="text" id="newInfoValue" class="form-control" placeholder="Değer" />
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-info" onclick="addInfo()">Ekle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section PageScripts
+{
+    <script>
+        var productId = '@Model.Id';
+
+       
+        function addImage() {
+            var file = document.getElementById('newImage').files[0];
+            if (!file) return alert('Resim seçin.');
+
+            var formData = new FormData();
+            formData.append('productId', productId);
+            formData.append('img', file);
+
+            $.ajax({
+                url: '/Management/Products/AddImage',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (e) {
+                    if (e.status) {
+                        $('#imageList').append(`
+                            <div class="col-auto" id="img-${e.imageId}">
+                                <img src="${e.imageUrl}" style="width:100px; height:80px; object-fit:contain;" />
+                                <button type="button" class="btn btn-danger btn-sm d-block mt-1" onclick="deleteImage('${e.imageId}')">Sil</button>
+                            </div>
+                        `);
+                        document.getElementById('newImage').value = '';
+                    } else {
+                        alert(e.message);
+                    }
+                }
+            });
+        }
+
+        function deleteImage(id) {
+            $.ajax({
+                url: '/Management/Products/DeleteImage/' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (e) {
+                    if (e.status) {
+                        $('#img-' + id).remove();
+                    } else {
+                        alert(e.message);
+                    }
+                }
+            });
+        }
+
+      
+        function addFeature() {
+            var key = document.getElementById('newFeatureKey').value;
+            var value = document.getElementById('newFeatureValue').value;
+            if (!key || !value) return alert('Alan ve değer girin.');
+
+            $.ajax({
+                url: '/Management/Products/AddFeature',
+                type: 'POST',
+                data: { productId, key, value },
+                dataType: 'json',
+                success: function (e) {
+                    if (e.status) {
+                        $('#featureTable tbody').append(`
+                            <tr id="feature-${e.featureId}">
+                                <td>${e.key}</td>
+                                <td>${e.value}</td>
+                                <td><button type="button" class="btn btn-danger btn-sm" onclick="deleteFeature('${e.featureId}')">Sil</button></td>
+                            </tr>
+                        `);
+                        document.getElementById('newFeatureKey').value = '';
+                        document.getElementById('newFeatureValue').value = '';
+                    } else {
+                        alert(e.message);
+                    }
+                }
+            });
+        }
+
+        function deleteFeature(id) {
+            $.ajax({
+                url: '/Management/Products/DeleteFeature/' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (e) {
+                    if (e.status) {
+                        $('#feature-' + id).remove();
+                    } else {
+                        alert(e.message);
+                    }
+                }
+            });
+        }
+
+      
+        function addInfo() {
+            var key = document.getElementById('newInfoKey').value;
+            var value = document.getElementById('newInfoValue').value;
+            if (!key || !value) return alert('Alan ve değer girin.');
+
+            $.ajax({
+                url: '/Management/Products/AddAdditionalInfo',
+                type: 'POST',
+                data: { productId, key, value },
+                dataType: 'json',
+                success: function (e) {
+                    if (e.status) {
+                        $('#infoTable tbody').append(`
+                            <tr id="info-${e.infoId}">
+                                <td>${e.key}</td>
+                                <td>${e.value}</td>
+                                <td><button type="button" class="btn btn-danger btn-sm" onclick="deleteInfo('${e.infoId}')">Sil</button></td>
+                            </tr>
+                        `);
+                        document.getElementById('newInfoKey').value = '';
+                        document.getElementById('newInfoValue').value = '';
+                    } else {
+                        alert(e.message);
+                    }
+                }
+            });
+        }
+
+        function deleteInfo(id) {
+            $.ajax({
+                url: '/Management/Products/DeleteAdditionalInfo/' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (e) {
+                    if (e.status) {
+                        $('#info-' + id).remove();
+                    } else {
+                        alert(e.message);
+                    }
+                }
+            });
+        }
+    </script>
+}

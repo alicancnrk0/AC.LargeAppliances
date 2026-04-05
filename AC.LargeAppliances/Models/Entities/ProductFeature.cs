@@ -9,6 +9,7 @@ namespace AC.LargeAppliances.Models.Entities
         [Key]
         public Guid Id { get; set; }
         public Guid ProductId { get; set; }
+        public string? Key { get; set; }
         public string? Value { get; set; }
         public int SortOrder { get; set; }
 

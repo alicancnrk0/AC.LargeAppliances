@@ -1,0 +1,199 @@
+﻿@model HomePage
+
+@{
+    ViewData["Title"] = "Ana Sayfa Oluştur";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Ana Sayfa Oluştur</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <h6 class="mb-4">Hero</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroSubTitle" class="form-label"></label>
+                        <input asp-for="HeroSubTitle" class="form-control" type="text" />
+                        <span asp-validation-for="HeroSubTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroTitle" class="form-label"></label>
+                        <input asp-for="HeroTitle" class="form-control" type="text" />
+                        <span asp-validation-for="HeroTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroValues" class="form-label"></label>
+                        <input asp-for="HeroValues" class="form-control" type="text" />
+                        <span asp-validation-for="HeroValues" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroLeftButtonTitle" class="form-label"></label>
+                        <input asp-for="HeroLeftButtonTitle" class="form-control" type="text" />
+                        <span asp-validation-for="HeroLeftButtonTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroLefButtonUrl" class="form-label"></label>
+                        <input asp-for="HeroLefButtonUrl" class="form-control" type="text" />
+                        <span asp-validation-for="HeroLefButtonUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroRightButtonTitle" class="form-label"></label>
+                        <input asp-for="HeroRightButtonTitle" class="form-control" type="text" />
+                        <span asp-validation-for="HeroRightButtonTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroRightButtonUrl" class="form-label"></label>
+                        <input asp-for="HeroRightButtonUrl" class="form-control" type="text" />
+                        <span asp-validation-for="HeroRightButtonUrl" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Mavi Kart</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="BlueTitle" class="form-label"></label>
+                        <input asp-for="BlueTitle" class="form-control" type="text" />
+                        <span asp-validation-for="BlueTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BlueSubTitle" class="form-label"></label>
+                        <input asp-for="BlueSubTitle" class="form-control" type="text" />
+                        <span asp-validation-for="BlueSubTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="BlueValues" class="form-label"></label>
+                        <input asp-for="BlueValues" class="form-control" type="text" />
+                        <span asp-validation-for="BlueValues" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Turuncu Kart</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="OrangeTitle" class="form-label"></label>
+                        <input asp-for="OrangeTitle" class="form-control" type="text" />
+                        <span asp-validation-for="OrangeTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="OrangeSubTitle" class="form-label"></label>
+                        <input asp-for="OrangeSubTitle" class="form-control" type="text" />
+                        <span asp-validation-for="OrangeSubTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="OrangeValues" class="form-label"></label>
+                        <input asp-for="OrangeValues" class="form-control" type="text" />
+                        <span asp-validation-for="OrangeValues" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Yeşil Kart</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="GreenTitle" class="form-label"></label>
+                        <input asp-for="GreenTitle" class="form-control" type="text" />
+                        <span asp-validation-for="GreenTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="GreenSubTitle" class="form-label"></label>
+                        <input asp-for="GreenSubTitle" class="form-control" type="text" />
+                        <span asp-validation-for="GreenSubTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="GreenValues" class="form-label"></label>
+                        <input asp-for="GreenValues" class="form-control" type="text" />
+                        <span asp-validation-for="GreenValues" class="text-danger"></span>
+                    </div>
+
+                    html<hr class="my-6" />
+                    <h6 class="mb-4">Şok Fiyat</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="ShockingTitle" class="form-label"></label>
+                        <input asp-for="ShockingTitle" class="form-control" type="text" />
+                        <span asp-validation-for="ShockingTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ShockingDescription" class="form-label"></label>
+                        <input asp-for="ShockingDescription" class="form-control" type="text" />
+                        <span asp-validation-for="ShockingDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ShockingIconClass" class="form-label"></label>
+                        <input asp-for="ShockingIconClass" class="form-control" type="text" />
+                        <span asp-validation-for="ShockingIconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ShockingDateTime" class="form-label"></label>
+                        <input asp-for="ShockingDateTime" class="form-control" type="text" />
+                        <span asp-validation-for="ShockingDateTime" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ShockingRightIconClass" class="form-label"></label>
+                        <input asp-for="ShockingRightIconClass" class="form-control" type="text" />
+                        <span asp-validation-for="ShockingRightIconClass" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ShockingRightTitle" class="form-label"></label>
+                        <input asp-for="ShockingRightTitle" class="form-control" type="text" />
+                        <span asp-validation-for="ShockingRightTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ShockingRightSubTitle" class="form-label"></label>
+                        <input asp-for="ShockingRightSubTitle" class="form-control" type="text" />
+                        <span asp-validation-for="ShockingRightSubTitle" class="text-danger"></span>
+                    </div>
+
+                    <hr class="my-6" />
+                    <h6 class="mb-4">Ürün Bölümü</h6>
+
+                    <div class="mb-6">
+                        <label asp-for="ProductTitle" class="form-label"></label>
+                        <input asp-for="ProductTitle" class="form-control" type="text" />
+                        <span asp-validation-for="ProductTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ProductSubTitle" class="form-label"></label>
+                        <input asp-for="ProductSubTitle" class="form-control" type="text" />
+                        <span asp-validation-for="ProductSubTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="ProductHurry" class="form-label"></label>
+                        <input asp-for="ProductHurry" class="form-control" type="text" />
+                        <span asp-validation-for="ProductHurry" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <button class="btn btn-secondary" asp-action="Index">Geri</button>
+                        <button class="btn btn-success" style="float:right" type="submit">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

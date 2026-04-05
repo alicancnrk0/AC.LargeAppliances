@@ -1,0 +1,109 @@
+﻿@model IEnumerable<ContactRequest>
+
+@{
+    ViewData["Title"] = "İletişim İstekleri";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">İletişim İstekleri</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Ad Soyad</th>
+                                <th>E-posta</th>
+                                <th>Telefon</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row-@item.Id">
+                                    <td>@item.FirstName @item.LastName</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.CreatedDate.ToString("dd.MM.yyyy HH:mm")</td>
+                                    <td>
+                                        <span id="badge-@item.Id" class="badge @(item.IsReaded ? "bg-success" : "bg-warning")">
+                                            @(item.IsReaded ? "Okundu" : "Okunmadı")
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" asp-action="Detail" asp-route-id="@item.Id">
+                                                    <i class="icon-base bx bx-show me-1"></i> Detay
+                                                </a>
+                                                <button class="dropdown-item" onclick="toggleRead('@item.Id', this)">
+                                                    <i class="icon-base bx bx-check me-1"></i>
+                                                    <span id="toggle-text-@item.Id">@(item.IsReaded ? "Okunmadı İşaretle" : "Okundu İşaretle")</span>
+                                                </button>
+                                                <button class="dropdown-item" onclick="deleteRecord('@item.Id', this)">
+                                                    <i class="icon-base bx bx-trash me-1"></i> Sil
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageScripts
+{
+    <script>
+        function toggleRead(id, elem) {
+            $.ajax({
+                url: '/Management/ContactRequests/ToggleRead/' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (e) {
+                    if (e.status) {
+                        var badge = $('#badge-' + id);
+                        var toggleText = $('#toggle-text-' + id);
+                        if (e.isReaded) {
+                            badge.removeClass('bg-warning').addClass('bg-success').text('Okundu');
+                            toggleText.text('Okunmadı İşaretle');
+                        } else {
+                            badge.removeClass('bg-success').addClass('bg-warning').text('Okunmadı');
+                            toggleText.text('Okundu İşaretle');
+                        }
+                    } else {
+                        alert(e.message);
+                    }
+                }
+            });
+        }
+
+        function deleteRecord(id, elem) {
+            $.ajax({
+                url: '/Management/ContactRequests/Delete/' + id,
+                type: 'POST',
+                dataType: 'json',
+                success: function (e) {
+                    if (e.status) {
+                        $('#row-' + id).remove();
+                    } else {
+                        alert(e.message);
+                    }
+                }
+            });
+        }
+    </script>
+}

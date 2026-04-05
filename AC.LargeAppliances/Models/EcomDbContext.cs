@@ -25,8 +25,10 @@ namespace AC.LargeAppliances.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductFeature> ProductFeatures { get; set; }
-        public DbSet<ProductAdditionalInfo> ProductAdditionalInfo { get; set; }
-
+        public DbSet<ProductAdditionalInfo> ProductAdditionalInfos { get; set; }
+        public DbSet<ProductPage> ProductPages { get; set; }
+        public DbSet<HomePage> HomePages { get; set; }
+        public DbSet<User> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured) optionsBuilder.UseSqlServer("Server=127.0.0.1;User Id=sa;Password=11;Database=EcomDb;Encrypt=False;");

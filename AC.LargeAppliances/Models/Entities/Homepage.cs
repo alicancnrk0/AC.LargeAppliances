@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AC.LargeAppliances.Models.Entities
 {
-    [Table("Homepages")]
-    public class Homepage
+    [Table("HomePages")]
+    public class HomePage
     {
         [Key]
         public Guid Id { get; set; }
@@ -32,6 +32,21 @@ namespace AC.LargeAppliances.Models.Entities
         public string? GreenTitle { get; set; }
         public string? GreenSubTitle { get; set; }
         public string? GreenValues { get; set; }
+
+
+        public string? ShockingTitle { get; set; }
+        public string? ShockingDescription { get; set; }
+        public string? ShockingIconClass { get; set; }
+        public string? ShockingDateTime { get; set; }
+        public string? ShockingRightIconClass { get; set; }
+        public string? ShockingRightTitle { get; set; }
+        public string? ShockingRightSubTitle { get; set; }
+        
+
+        public string? ProductTitle { get; set; }
+        public string? ProductSubTitle { get; set; }
+        public string? ProductHurry { get; set; }
+
 
 
     }

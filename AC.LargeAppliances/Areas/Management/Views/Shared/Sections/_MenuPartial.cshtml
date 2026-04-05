@@ -5,7 +5,7 @@
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 	<div class="app-brand demo">
-		<a href="/" class="app-brand-link">
+		<a asp-action="Dashboard" class="app-brand-link">
 			<span class="app-brand-logo demo">
 				<span class="text-primary">
 					<img width="175" src="~/admin/logo/logo.svg" alt="ECOM" />
@@ -29,22 +29,29 @@
 		</li>
 
 		<li class="menu-item">
-			<a asp-area="Management" asp-controller="HomePages" asp-action="Index"
+			<a asp-area="Management" asp-controller="Dashboard" asp-action="Index"
 				   class="menu-link">
 				<i class="menu-icon tf-icons bx bx-category-alt"></i>
-				<div class="text-truncate" data-i18n="Anasayfa">Ana Sayfa</div>
+				<div class="text-truncate" data-i18n="Kontrol Paneli">Kontrol Paneli</div>
 			</a>
 		</li>
-
 
 		<li class="menu-header small text-uppercase">
 			<span class="menu-header-text">SAYFALAR</span>
 		</li>
 
 		<li class="menu-item">
+			<a asp-area="Management" asp-controller="HomePages" asp-action="Index"
+				   class="menu-link">
+				<i class="menu-icon tf-icons bx bx-home-alt"></i>
+				<div class="text-truncate" data-i18n="Anasayfa">Ana Sayfa</div>
+			</a>
+		</li>
+
+		<li class="menu-item">
 			<a asp-area="Management" asp-controller="AboutPages" asp-action="Index"
 				   class="menu-link">
-				<i class="menu-icon tf-icons bx bx-file"></i>
+				<i class="menu-icon tf-icons bx bx-info-circle"></i>
 				<div class="text-truncate" data-i18n="Hakkımızda Sayfası">Hakkımızda Sayfası</div>
 			</a>
 		</li>
@@ -81,7 +88,45 @@
 			</a>
 		</li>
 
+		<li class="menu-item">
+			<a asp-area="Management" asp-controller="ProductPages" asp-action="Index"
+				   class="menu-link">
+				<i class="menu-icon tf-icons bx bx-shopping-bag"></i>
+				<div class="text-truncate" data-i18n="Ürünler Sayfası">Ürünler Sayfası</div>
+			</a>
+		</li>
 
+		<li class="menu-header small text-uppercase">
+			<span class="menu-header-text">TALEPLER</span>
+		</li>
+
+		<li class="menu-item">
+			<a asp-area="Management" asp-controller="ContactRequests" asp-action="Index"
+				   class="menu-link">
+				<i class="menu-icon tf-icons bx bx-message-dots"></i>
+				<div class="text-truncate" data-i18n="İletişim İstekleri">İletişim İstekleri</div>
+			</a>
+		</li>
+
+		<li class="menu-item">
+			<a asp-area="Management" asp-controller="DiscountRequests" asp-action="Index"
+				   class="menu-link">
+				<i class="menu-icon tf-icons bx bx-tag"></i>
+				<div class="text-truncate" data-i18n="İndirim İstekleri">İndirim İstekleri</div>
+			</a>
+		</li>
+
+		<li class="menu-header small text-uppercase">
+			<span class="menu-header-text">ÜRÜNLER</span>
+		</li>
+
+		<li class="menu-item">
+			<a asp-area="Management" asp-controller="Products" asp-action="Index"
+				   class="menu-link">
+				<i class="menu-icon tf-icons bx bx-purchase-tag"></i>
+				<div class="text-truncate" data-i18n="Ürünler">Ürünler</div>
+			</a>
+		</li>
 
 		<li class="menu-header small text-uppercase">
 			<span class="menu-header-text">ORTAK YAPILAR</span>
@@ -90,7 +135,7 @@
 		<li class="menu-item">
 			<a asp-area="Management" asp-controller="Discounts" asp-action="Index"
 				   class="menu-link">
-				<i class="menu-icon tf-icons bx bx-purchase-tag"></i>
+				<i class="menu-icon tf-icons bx bx-dollar-circle"></i>
 				<div class="text-truncate" data-i18n="İndirim">İndirim</div>
 			</a>
 		</li>
@@ -98,7 +143,7 @@
 		<li class="menu-item">
 			<a asp-area="Management" asp-controller="Stores" asp-action="Index"
 				   class="menu-link">
-				<i class="menu-icon tf-icons bx bx-store"></i>
+				<i class="menu-icon tf-icons bx bx-buildings"></i>
 				<div class="text-truncate" data-i18n="Mağazalar">Mağazalar</div>
 			</a>
 		</li>

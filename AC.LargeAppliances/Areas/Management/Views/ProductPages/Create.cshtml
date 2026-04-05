@@ -1,0 +1,49 @@
+﻿@model ProductPage
+
+@{
+    ViewData["Title"] = "Ürün Sayfası Oluştur";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Ürün Sayfası Oluştur</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroLeftButonText" class="form-label"></label>
+                        <input asp-for="HeroLeftButonText" class="form-control" type="text" />
+                        <span asp-validation-for="HeroLeftButonText" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroLeftTitle" class="form-label"></label>
+                        <input asp-for="HeroLeftTitle" class="form-control" type="text" />
+                        <span asp-validation-for="HeroLeftTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="HeroLeftDescription" class="form-label"></label>
+                        <input asp-for="HeroLeftDescription" class="form-control" type="text" />
+                        <span asp-validation-for="HeroLeftDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="form-label">Sağ Görsel</label>
+                        <input type="file" name="heroRightImg" class="form-control" accept="image/*" />
+                    </div>
+
+                    <div class="mb-6">
+                        <button class="btn btn-secondary" asp-action="Index">Geri</button>
+                        <button class="btn btn-success" style="float:right" type="submit">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

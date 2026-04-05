@@ -1,4 +1,5 @@
 using AC.LargeAppliances.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace AC.LargeAppliances
@@ -16,6 +17,14 @@ namespace AC.LargeAppliances
             {
                 options.UseSqlServer("Server=127.0.0.1;User Id=sa;Password=11;Database=EcomDb;Encrypt=False;");
             });
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Management/Auth/Login";
+                    options.LogoutPath = "/Management/Auth/Logout";
+                    options.AccessDeniedPath = "/Management/Auth/Login";
+                });
 
             var app = builder.Build();
 
@@ -38,6 +47,7 @@ namespace AC.LargeAppliances
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();

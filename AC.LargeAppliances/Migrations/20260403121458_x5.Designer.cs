@@ -4,6 +4,7 @@ using AC.LargeAppliances.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AC.LargeAppliances.Migrations
 {
     [DbContext(typeof(EcomDbContext))]
-    partial class EcomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260403121458_x5")]
+    partial class x5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -297,95 +300,6 @@ namespace AC.LargeAppliances.Migrations
                     b.ToTable("DiscountRequests");
                 });
 
-            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.HomePage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("BlueSubTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BlueTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BlueValues")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GreenSubTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GreenTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GreenValues")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HeroLefButtonUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HeroLeftButtonTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HeroRightButtonTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HeroRightButtonUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HeroSubTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HeroTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HeroValues")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OrangeSubTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OrangeTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OrangeValues")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductHurry")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductSubTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingDateTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingIconClass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingRightIconClass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingRightSubTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingRightTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HomePages");
-                });
-
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Product", b =>
                 {
                     b.Property<Guid>("Id")
@@ -451,9 +365,6 @@ namespace AC.LargeAppliances.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Key")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
@@ -502,6 +413,9 @@ namespace AC.LargeAppliances.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HeroLeftDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HeroLeftImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HeroLeftTitle")
@@ -573,29 +487,6 @@ namespace AC.LargeAppliances.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Terms");
-                });
-
-            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Vendor", b =>

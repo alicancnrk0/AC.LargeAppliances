@@ -1,0 +1,80 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Yeni Ürün";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Yeni Ürün</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="mb-6">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" type="text" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="VendorId" class="form-label"></label>
+                        <select asp-for="VendorId" class="form-select">
+                            <option value="">-- Satıcı Seç --</option>
+                            @foreach (var vendor in ViewBag.Vendors as List<Vendor>)
+                            {
+                                <option value="@vendor.Id">@vendor.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="VendorId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Price" class="form-label"></label>
+                        <input asp-for="Price" class="form-control" type="number" step="0.01" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="OldPrice" class="form-label"></label>
+                        <input asp-for="OldPrice" class="form-control" type="number" step="0.01" />
+                        <span asp-validation-for="OldPrice" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="StarsCount" class="form-label"></label>
+                        <input asp-for="StarsCount" class="form-control" type="number"/>
+                        <span asp-validation-for="StarsCount" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="SKU" class="form-label"></label>
+                        <input asp-for="SKU" class="form-control" type="text" />
+                        <span asp-validation-for="SKU" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Tags" class="form-label"></label>
+                        <input asp-for="Tags" class="form-control" type="text" />
+                        <span asp-validation-for="Tags" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label asp-for="Description" class="form-label"></label>
+                        <textarea asp-for="Description" class="form-control" style="height:200px; resize:none;"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <button class="btn btn-secondary" asp-action="Index">Geri</button>
+                        <button class="btn btn-success" style="float:right" type="submit">Kaydet ve Devam Et</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

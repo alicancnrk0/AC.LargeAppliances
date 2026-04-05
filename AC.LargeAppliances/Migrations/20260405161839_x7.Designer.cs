@@ -4,6 +4,7 @@ using AC.LargeAppliances.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AC.LargeAppliances.Migrations
 {
     [DbContext(typeof(EcomDbContext))]
-    partial class EcomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260405161839_x7")]
+    partial class x7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -351,36 +354,6 @@ namespace AC.LargeAppliances.Migrations
                     b.Property<string>("OrangeValues")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductHurry")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductSubTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingDateTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingIconClass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingRightIconClass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingRightSubTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingRightTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShockingTitle")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("HomePages");
@@ -573,29 +546,6 @@ namespace AC.LargeAppliances.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Terms");
-                });
-
-            modelBuilder.Entity("AC.LargeAppliances.Models.Entities.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("AC.LargeAppliances.Models.Entities.Vendor", b =>

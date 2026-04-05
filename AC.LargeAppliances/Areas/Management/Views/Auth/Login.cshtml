@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/imgs/template/favicon.svg">
+        <link href="~/assets/css/style.css?v=3.0.0" rel="stylesheet">
+            <title>Giriş Yap</title>
+        </head>
+        <body>
+
+
+            <main class="main">
+                <section class="section-box shop-template" style="min-height:100vh; display:flex; align-items:center;">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-4 ">
+                                <h3>Yönetim Paneli Girişi</h3>
+                                <p class="font-md color-gray-500">Tekrar hoş geldiniz!</p>
+                                <div class="form-register mt-30 mb-30">
+                                    <form asp-controller="Auth" asp-action="Login" asp-area="Management" method="post">
+                                        @Html.AntiForgeryToken()
+
+                                        @if (ViewBag.Error != null)
+                                        {
+                                            <div class="alert alert-danger mb-20">@ViewBag.Error</div>
+                                        }
+
+                                        <div class="form-group">
+                                            <label class="mb-5 font-sm color-gray-700">Kullanıcı Adı *</label>
+                                            <input class="form-control" type="text" name="username" placeholder="kullaniciadi">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-5 font-sm color-gray-700">Şifre *</label>
+                                            <input class="form-control" type="password" name="password" placeholder="******************">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="font-md-bold btn btn-buy" type="submit" value="Giriş Yap">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <script src="~/assets/js/vendors/jquery-3.6.0.min.js"></script>
+            <script src="~/assets/js/vendors/bootstrap.bundle.min.js"></script>
+            <script src="~/assets/js/main.js?v=3.0.0"></script>
+        </body>
+    </html>

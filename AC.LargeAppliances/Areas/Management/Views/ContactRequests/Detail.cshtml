@@ -1,0 +1,56 @@
+﻿@model ContactRequest
+
+@{
+    ViewData["Title"] = "İletişim İsteği Detay";
+}
+
+<div class="row mb-6 gy-6">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">İletişim İsteği Detay</h5>
+                <a class="btn btn-secondary" asp-action="Index">Geri</a>
+            </div>
+            <div class="card-body">
+
+                <div class="mb-6">
+                    <label class="form-label">Ad</label>
+                    <input type="text" class="form-control" value="@Model.FirstName" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label">Soyad</label>
+                    <input type="text" class="form-control" value="@Model.LastName" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label">E-posta</label>
+                    <input type="text" class="form-control" value="@Model.Email" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label">Telefon</label>
+                    <input type="text" class="form-control" value="@Model.Phone" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label">Mesaj</label>
+                    <textarea class="form-control" readonly disabled style="height:200px; resize:none;">@Model.Message</textarea>
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label">Tarih</label>
+                    <input type="text" class="form-control" value="@Model.CreatedDate.ToString("dd.MM.yyyy HH:mm")" readonly disabled />
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label">Durum</label>
+                    <span class="badge @(Model.IsReaded ? "bg-success" : "bg-warning")">
+                        @(Model.IsReaded ? "Okundu" : "Okunmadı")
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

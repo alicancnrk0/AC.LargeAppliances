@@ -16,9 +16,45 @@ namespace AC.LargeAppliances.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            HomePageVM vm = new HomePageVM();
+
+            vm.HomePage = await _context.HomePages
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+
+            vm.MostDiscountedProducts = await _context.Products
+                .AsNoTracking()
+                .Include(x => x.Vendor)
+                .Include(x => x.Images.OrderBy(i => i.SortOrder))
+                .Where(x => x.OldPrice.HasValue && x.OldPrice > 0)
+                .OrderByDescending(x => (x.OldPrice - x.Price) / x.OldPrice * 100)
+                .Take(5)
+                .ToListAsync();
+
+            vm.Products = await _context.Products
+                .AsNoTracking()
+                .Include(x => x.Vendor)
+                .Include(x => x.Images.OrderBy(x => x.SortOrder))
+                .ToListAsync();
+
+            vm.Sponsors = await _context.Sponsors
+                  .AsNoTracking()
+                  .Take(10)
+                  .ToListAsync();
+
+            vm.CardItems = await _context.CardItems
+               .AsNoTracking()
+               .OrderBy(x => x.SortOrder)
+               .ToListAsync();
+
+            vm.Discount = await _context.Discounts
+               .AsNoTracking()
+               .FirstOrDefaultAsync();
+
+
+            return View(vm);
         }
 
 
@@ -164,15 +200,66 @@ namespace AC.LargeAppliances.Controllers
         }
 
 
-        public IActionResult Products()
+        public async Task<IActionResult> Products(int page = 1 )
         {
-            return View();
+
+            int pageSize = 16;
+
+            ProductPageVM vm = new ProductPageVM();
+
+            vm.ProductPage = await _context.ProductPages
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+
+            vm.Products = await _context.Products
+                .AsNoTracking()
+                .Include(x => x.Vendor)
+                .Include(x => x.Images.OrderBy(x => x.SortOrder))
+                .ToListAsync();
+
+            vm.CardItems = await _context.CardItems
+                .AsNoTracking()
+                .OrderBy(x => x.SortOrder)
+                .ToListAsync();
+
+            vm.Discount = await _context.Discounts
+               .AsNoTracking()
+               .FirstOrDefaultAsync();
+
+            int totalProducts = await _context.Products.CountAsync();
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / pageSize);
+
+            return View(vm);
         }
 
 
-        public IActionResult ProductView()
+        public async Task<IActionResult> ProductView(Guid id)
         {
-            return View();
+            ProductViewVM vm = new ProductViewVM();
+
+            vm.Product = await _context.Products
+                .AsNoTracking()
+                .Include(x => x.Vendor)
+                .Include(x => x.Images.OrderBy(x => x.SortOrder))
+                .Include(x => x.Features.OrderBy(x => x.SortOrder))
+                .Include(x => x.AdditionalInfos)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (vm.Product == null)
+                return RedirectToAction(nameof(Products));
+
+            vm.CardItems = await _context.CardItems
+                .AsNoTracking()
+                .OrderBy(x => x.SortOrder)
+                .ToListAsync();
+
+            vm.Discount = await _context.Discounts
+               .AsNoTracking()
+               .FirstOrDefaultAsync();
+
+
+            return View(vm);
         }
 
         public async Task<IActionResult> Term()
