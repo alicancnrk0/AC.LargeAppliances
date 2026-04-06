@@ -1,12 +1,14 @@
 ﻿using AC.LargeAppliances.Models;
 using AC.LargeAppliances.Models.Entities;
 using AC.LargeAppliances.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AC.LargeAppliances.Areas.Management.Controllers
 {
     [Area("Management")]
+    [Authorize]
     public class ProductPagesController : Controller
     {
         private readonly EcomDbContext _context;
